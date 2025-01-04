@@ -79,4 +79,3 @@ networks:
 volumes:
   postgres:
   pgadmin:
-
