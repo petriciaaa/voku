@@ -3,6 +3,7 @@ FROM node:18-alpine
 WORKDIR /usr/src/app
 
 COPY package*.json ./
+COPY prisma ./prisma/
 
 RUN npm install
 
@@ -10,6 +11,14 @@ COPY . .
 
 RUN npx prisma generate
 
+ENV NODE_ENV=development
+ENV CHOKIDAR_USEPOLLING=true
+ENV WATCHPACK_POLLING=true
+
 EXPOSE 3000
 
-CMD ["npm", "run", "start:dev"]
+# Добавляем nodemon
+RUN npm install -g nodemon
+
+# Изменяем команду запуска
+CMD ["nodemon", "-L", "--watch", "src", "--ext", "ts,js", "--exec", "npm run start:dev"]
