@@ -21,4 +21,4 @@ EXPOSE 3000
 RUN npm install -g nodemon
 
 # Изменяем команду запуска
-CMD ["nodemon", "-L", "--watch", "src", "--ext", "ts,js", "--exec", "npm run start:dev"]
+CMD ["sh", "-c", "npm run migrate && nodemon -L --watch src --ext ts,js --exec npm run start:dev"]
