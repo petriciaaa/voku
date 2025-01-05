@@ -19,11 +19,7 @@ function App() {
   return (
     <div className="asd">
       {users.map((user) => {
-<<<<<<< Updated upstream
-        return <UserInfo user={user} />;
-=======
         return <UserInfo key={user.id} user={user} />;
->>>>>>> Stashed changes
       })}
       <input
         type="text"
@@ -31,13 +27,7 @@ function App() {
         onChange={(e) => setEmail(e.target.value)}
       />
       {email}
-<<<<<<< Updated upstream
       <button onClick={handleClick}>Create</button>
-=======
-      <button className="primary" onClick={handleClick}>
-        Create
-      </button>
->>>>>>> Stashed changes
     </div>
   );
 }
