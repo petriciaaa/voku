@@ -7,7 +7,7 @@ async function bootstrap() {
   const app = await NestFactory.create(AppModule);
 
   // Включаем CORS
-  app.enableCors();
+  // app.enableCors();
 
   // Подключаем глобальную валидацию DTO
   app.useGlobalPipes(new ValidationPipe());
