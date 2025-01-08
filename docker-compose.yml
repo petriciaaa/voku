@@ -110,20 +110,6 @@ services:
       - backend
     restart: unless-stopped
 
-  # аутентификациия
-  auth-service:
-    container_name: auth-service
-    build:
-      context: ./auth-service
-    ports:
-      - "3001:3000"
-    environment:
-      - DATABASE_URL=postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD:-password}@postgres:5432/${POSTGRES_DB:-voku}?schema=public
-    depends_on:
-      - postgres
-    networks:
-      - app-network
-
 networks:
   app-network:
     driver: bridge
