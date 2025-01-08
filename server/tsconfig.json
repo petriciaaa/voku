@@ -13,7 +13,8 @@
     "paths": {
       "@/*": ["src/*"],
       "@core/*": ["src/core/*"],
-      "@prisma-core/*": ["src/core/prisma/*"]
+      "@prisma-core/*": ["src/core/prisma/*"],
+      "@auth-service/*": ["src/shared/config/constants/auth/*"]
     },
     "incremental": true,
     "skipLibCheck": true,

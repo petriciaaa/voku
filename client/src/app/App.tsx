@@ -1,94 +1,44 @@
 import React from "react";
-import { Link, Route, Routes } from "react-router";
+import { Link, Route, Routes, Outlet } from "react-router-dom";
 import ProtectedRoute from "./routes/ProtectedRoute";
 import { NotFoundPage } from "@/pages/not-found";
 import { Header } from "@/widgets/layouts/header";
 import { Footer } from "@/widgets/layouts/footer";
+import { RegisterPage } from "@/pages/register";
 
-function App() {
+function Layout() {
   return (
     <>
       <Header />
-      <Navigation />
-      <Routes>
-        <Route index element={<Landing />} />
-        <Route element={<ProtectedRoute isAllowed={true} />}>
-          <Route path="home" element={<Home />} />
-          <Route path="dashboard" element={<Dashboard />} />
-        </Route>
-        <Route
-          path="analytics"
-          element={
-            <ProtectedRoute redirectPath="/home" isAllowed={true}>
-              <Analytics />
-            </ProtectedRoute>
-          }
-        />
-        <Route
-          path="admin"
-          element={
-            <ProtectedRoute redirectPath="/home" isAllowed={true}>
-              <Admin />
-            </ProtectedRoute>
-          }
-        />
-        <Route path="*" element={<p>There's nothing here: 404!</p>} />
-      </Routes>
+      <main className="w-100">
+        <Outlet />
+      </main>
       <Footer />
     </>
   );
 }
 
-const Navigation = () => {
+function App() {
   return (
-    <nav
-      style={{
-        borderBottom: "solid 1px",
-        paddingBottom: "1rem",
-      }}
-    >
-      <Link className="p-4" to="/home">
-        Home
-      </Link>
-      <Link className="p-4" to="/users">
-        Users
-      </Link>
-      <Link className="p-4" to="/dashboard">
-        dashboard
-      </Link>
-      <Link className="p-4" to="/analytics">
-        analytics
-      </Link>
-      <Link className="p-4" to="/admin">
-        admin
-      </Link>
-    </nav>
+    <Routes>
+      <Route path="/" element={<Layout />}>
+        <Route index path="register" element={<RegisterPage />} />
+        <Route
+          path="dashboard"
+          element={
+            <ProtectedRoute redirectPath="/register" isAllowed={false}>
+              <Dashboard />
+            </ProtectedRoute>
+          }
+        />
+        <Route path="*" element={<NotFoundPage />} />
+      </Route>
+    </Routes>
   );
-};
-const Landing = () => {
-  return <h2>Landing (Public: anyone can access this page)</h2>;
-};
-
-const Home = () => {
-  return <h2>Home (Protected: authenticated user required)</h2>;
-};
+}
 
 const Dashboard = () => {
   return <h2>Dashboard (Protected: authenticated user required)</h2>;
 };
 
-const Analytics = () => {
-  return (
-    <h2>
-      Analytics (Protected: authenticated user with permission 'analyze'
-      required)
-    </h2>
-  );
-};
-
-const Admin = () => {
-  return (
-    <h2>Admin (Protected: authenticated user with role 'admin' required)</h2>
-  );
-};
 export default App;

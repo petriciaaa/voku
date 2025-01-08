@@ -18,59 +18,6 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
  * 
  */
 export type User = $Result.DefaultSelection<Prisma.$UserPayload>
-/**
- * Model Token
- * 
- */
-export type Token = $Result.DefaultSelection<Prisma.$TokenPayload>
-/**
- * Model SomeModel
- * 
- */
-export type SomeModel = $Result.DefaultSelection<Prisma.$SomeModelPayload>
-
-/**
- * Enums
- */
-export namespace $Enums {
-  export const UserRole: {
-  REGULAR: 'REGULAR',
-  ADMIN: 'ADMIN'
-};
-
-export type UserRole = (typeof UserRole)[keyof typeof UserRole]
-
-
-export const AuthMethod: {
-  CREDENTIALS: 'CREDENTIALS',
-  GOOGLE: 'GOOGLE',
-  YANDEX: 'YANDEX'
-};
-
-export type AuthMethod = (typeof AuthMethod)[keyof typeof AuthMethod]
-
-
-export const TokenType: {
-  VERIFICATION: 'VERIFICATION',
-  TWO_FACTOR: 'TWO_FACTOR',
-  PASSWORD_RESET: 'PASSWORD_RESET'
-};
-
-export type TokenType = (typeof TokenType)[keyof typeof TokenType]
-
-}
-
-export type UserRole = $Enums.UserRole
-
-export const UserRole: typeof $Enums.UserRole
-
-export type AuthMethod = $Enums.AuthMethod
-
-export const AuthMethod: typeof $Enums.AuthMethod
-
-export type TokenType = $Enums.TokenType
-
-export const TokenType: typeof $Enums.TokenType
 
 /**
  * ##  Prisma Client ʲˢ
@@ -204,26 +151,6 @@ export class PrismaClient<
     * ```
     */
   get user(): Prisma.UserDelegate<ExtArgs>;
-
-  /**
-   * `prisma.token`: Exposes CRUD operations for the **Token** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Tokens
-    * const tokens = await prisma.token.findMany()
-    * ```
-    */
-  get token(): Prisma.TokenDelegate<ExtArgs>;
-
-  /**
-   * `prisma.someModel`: Exposes CRUD operations for the **SomeModel** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more SomeModels
-    * const someModels = await prisma.someModel.findMany()
-    * ```
-    */
-  get someModel(): Prisma.SomeModelDelegate<ExtArgs>;
 }
 
 export namespace Prisma {
@@ -664,9 +591,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
-    User: 'User',
-    Token: 'Token',
-    SomeModel: 'SomeModel'
+    User: 'User'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -682,7 +607,7 @@ export namespace Prisma {
 
   export type TypeMap<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, ClientOptions = {}> = {
     meta: {
-      modelProps: "user" | "token" | "someModel"
+      modelProps: "user"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -757,154 +682,6 @@ export namespace Prisma {
           count: {
             args: Prisma.UserCountArgs<ExtArgs>
             result: $Utils.Optional<UserCountAggregateOutputType> | number
-          }
-        }
-      }
-      Token: {
-        payload: Prisma.$TokenPayload<ExtArgs>
-        fields: Prisma.TokenFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.TokenFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.TokenFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
-          }
-          findFirst: {
-            args: Prisma.TokenFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.TokenFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
-          }
-          findMany: {
-            args: Prisma.TokenFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>[]
-          }
-          create: {
-            args: Prisma.TokenCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
-          }
-          createMany: {
-            args: Prisma.TokenCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.TokenCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>[]
-          }
-          delete: {
-            args: Prisma.TokenDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
-          }
-          update: {
-            args: Prisma.TokenUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
-          }
-          deleteMany: {
-            args: Prisma.TokenDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.TokenUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.TokenUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>[]
-          }
-          upsert: {
-            args: Prisma.TokenUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$TokenPayload>
-          }
-          aggregate: {
-            args: Prisma.TokenAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateToken>
-          }
-          groupBy: {
-            args: Prisma.TokenGroupByArgs<ExtArgs>
-            result: $Utils.Optional<TokenGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.TokenCountArgs<ExtArgs>
-            result: $Utils.Optional<TokenCountAggregateOutputType> | number
-          }
-        }
-      }
-      SomeModel: {
-        payload: Prisma.$SomeModelPayload<ExtArgs>
-        fields: Prisma.SomeModelFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.SomeModelFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.SomeModelFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>
-          }
-          findFirst: {
-            args: Prisma.SomeModelFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.SomeModelFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>
-          }
-          findMany: {
-            args: Prisma.SomeModelFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>[]
-          }
-          create: {
-            args: Prisma.SomeModelCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>
-          }
-          createMany: {
-            args: Prisma.SomeModelCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          createManyAndReturn: {
-            args: Prisma.SomeModelCreateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>[]
-          }
-          delete: {
-            args: Prisma.SomeModelDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>
-          }
-          update: {
-            args: Prisma.SomeModelUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>
-          }
-          deleteMany: {
-            args: Prisma.SomeModelDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.SomeModelUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateManyAndReturn: {
-            args: Prisma.SomeModelUpdateManyAndReturnArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>[]
-          }
-          upsert: {
-            args: Prisma.SomeModelUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$SomeModelPayload>
-          }
-          aggregate: {
-            args: Prisma.SomeModelAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateSomeModel>
-          }
-          groupBy: {
-            args: Prisma.SomeModelGroupByArgs<ExtArgs>
-            result: $Utils.Optional<SomeModelGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.SomeModelCountArgs<ExtArgs>
-            result: $Utils.Optional<SomeModelCountAggregateOutputType> | number
           }
         }
       }
@@ -1094,27 +871,18 @@ export namespace Prisma {
     id: number | null
     email: string | null
     password: string | null
-    name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type UserMaxAggregateOutputType = {
     id: number | null
     email: string | null
     password: string | null
-    name: string | null
-    createdAt: Date | null
-    updatedAt: Date | null
   }
 
   export type UserCountAggregateOutputType = {
     id: number
     email: number
     password: number
-    name: number
-    createdAt: number
-    updatedAt: number
     _all: number
   }
 
@@ -1131,27 +899,18 @@ export namespace Prisma {
     id?: true
     email?: true
     password?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type UserMaxAggregateInputType = {
     id?: true
     email?: true
     password?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
   }
 
   export type UserCountAggregateInputType = {
     id?: true
     email?: true
     password?: true
-    name?: true
-    createdAt?: true
-    updatedAt?: true
     _all?: true
   }
 
@@ -1245,9 +1004,6 @@ export namespace Prisma {
     id: number
     email: string
     password: string
-    name: string | null
-    createdAt: Date
-    updatedAt: Date
     _count: UserCountAggregateOutputType | null
     _avg: UserAvgAggregateOutputType | null
     _sum: UserSumAggregateOutputType | null
@@ -1273,36 +1029,24 @@ export namespace Prisma {
     id?: boolean
     email?: boolean
     password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     email?: boolean
     password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }, ExtArgs["result"]["user"]>
 
   export type UserSelectScalar = {
     id?: boolean
     email?: boolean
     password?: boolean
-    name?: boolean
-    createdAt?: boolean
-    updatedAt?: boolean
   }
 
 
@@ -1313,9 +1057,6 @@ export namespace Prisma {
       id: number
       email: string
       password: string
-      name: string | null
-      createdAt: Date
-      updatedAt: Date
     }, ExtArgs["result"]["user"]>
     composites: {}
   }
@@ -1742,9 +1483,6 @@ export namespace Prisma {
     readonly id: FieldRef<"User", 'Int'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
-    readonly name: FieldRef<"User", 'String'>
-    readonly createdAt: FieldRef<"User", 'DateTime'>
-    readonly updatedAt: FieldRef<"User", 'DateTime'>
   }
     
 
@@ -2052,1770 +1790,6 @@ export namespace Prisma {
 
 
   /**
-   * Model Token
-   */
-
-  export type AggregateToken = {
-    _count: TokenCountAggregateOutputType | null
-    _min: TokenMinAggregateOutputType | null
-    _max: TokenMaxAggregateOutputType | null
-  }
-
-  export type TokenMinAggregateOutputType = {
-    id: string | null
-  }
-
-  export type TokenMaxAggregateOutputType = {
-    id: string | null
-  }
-
-  export type TokenCountAggregateOutputType = {
-    id: number
-    _all: number
-  }
-
-
-  export type TokenMinAggregateInputType = {
-    id?: true
-  }
-
-  export type TokenMaxAggregateInputType = {
-    id?: true
-  }
-
-  export type TokenCountAggregateInputType = {
-    id?: true
-    _all?: true
-  }
-
-  export type TokenAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Token to aggregate.
-     */
-    where?: TokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Tokens to fetch.
-     */
-    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: TokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Tokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Tokens.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned Tokens
-    **/
-    _count?: true | TokenCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: TokenMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: TokenMaxAggregateInputType
-  }
-
-  export type GetTokenAggregateType<T extends TokenAggregateArgs> = {
-        [P in keyof T & keyof AggregateToken]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateToken[P]>
-      : GetScalarType<T[P], AggregateToken[P]>
-  }
-
-
-
-
-  export type TokenGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: TokenWhereInput
-    orderBy?: TokenOrderByWithAggregationInput | TokenOrderByWithAggregationInput[]
-    by: TokenScalarFieldEnum[] | TokenScalarFieldEnum
-    having?: TokenScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: TokenCountAggregateInputType | true
-    _min?: TokenMinAggregateInputType
-    _max?: TokenMaxAggregateInputType
-  }
-
-  export type TokenGroupByOutputType = {
-    id: string
-    _count: TokenCountAggregateOutputType | null
-    _min: TokenMinAggregateOutputType | null
-    _max: TokenMaxAggregateOutputType | null
-  }
-
-  type GetTokenGroupByPayload<T extends TokenGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<TokenGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof TokenGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], TokenGroupByOutputType[P]>
-            : GetScalarType<T[P], TokenGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type TokenSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["token"]>
-
-  export type TokenSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["token"]>
-
-  export type TokenSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["token"]>
-
-  export type TokenSelectScalar = {
-    id?: boolean
-  }
-
-
-  export type $TokenPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "Token"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-    }, ExtArgs["result"]["token"]>
-    composites: {}
-  }
-
-  type TokenGetPayload<S extends boolean | null | undefined | TokenDefaultArgs> = $Result.GetResult<Prisma.$TokenPayload, S>
-
-  type TokenCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<TokenFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: TokenCountAggregateInputType | true
-    }
-
-  export interface TokenDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['Token'], meta: { name: 'Token' } }
-    /**
-     * Find zero or one Token that matches the filter.
-     * @param {TokenFindUniqueArgs} args - Arguments to find a Token
-     * @example
-     * // Get one Token
-     * const token = await prisma.token.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends TokenFindUniqueArgs>(args: SelectSubset<T, TokenFindUniqueArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one Token that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {TokenFindUniqueOrThrowArgs} args - Arguments to find a Token
-     * @example
-     * // Get one Token
-     * const token = await prisma.token.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends TokenFindUniqueOrThrowArgs>(args: SelectSubset<T, TokenFindUniqueOrThrowArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first Token that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TokenFindFirstArgs} args - Arguments to find a Token
-     * @example
-     * // Get one Token
-     * const token = await prisma.token.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends TokenFindFirstArgs>(args?: SelectSubset<T, TokenFindFirstArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first Token that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TokenFindFirstOrThrowArgs} args - Arguments to find a Token
-     * @example
-     * // Get one Token
-     * const token = await prisma.token.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends TokenFindFirstOrThrowArgs>(args?: SelectSubset<T, TokenFindFirstOrThrowArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more Tokens that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TokenFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Tokens
-     * const tokens = await prisma.token.findMany()
-     * 
-     * // Get first 10 Tokens
-     * const tokens = await prisma.token.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const tokenWithIdOnly = await prisma.token.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends TokenFindManyArgs>(args?: SelectSubset<T, TokenFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a Token.
-     * @param {TokenCreateArgs} args - Arguments to create a Token.
-     * @example
-     * // Create one Token
-     * const Token = await prisma.token.create({
-     *   data: {
-     *     // ... data to create a Token
-     *   }
-     * })
-     * 
-     */
-    create<T extends TokenCreateArgs>(args: SelectSubset<T, TokenCreateArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many Tokens.
-     * @param {TokenCreateManyArgs} args - Arguments to create many Tokens.
-     * @example
-     * // Create many Tokens
-     * const token = await prisma.token.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends TokenCreateManyArgs>(args?: SelectSubset<T, TokenCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many Tokens and returns the data saved in the database.
-     * @param {TokenCreateManyAndReturnArgs} args - Arguments to create many Tokens.
-     * @example
-     * // Create many Tokens
-     * const token = await prisma.token.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many Tokens and only return the `id`
-     * const tokenWithIdOnly = await prisma.token.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends TokenCreateManyAndReturnArgs>(args?: SelectSubset<T, TokenCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "createManyAndReturn">>
-
-    /**
-     * Delete a Token.
-     * @param {TokenDeleteArgs} args - Arguments to delete one Token.
-     * @example
-     * // Delete one Token
-     * const Token = await prisma.token.delete({
-     *   where: {
-     *     // ... filter to delete one Token
-     *   }
-     * })
-     * 
-     */
-    delete<T extends TokenDeleteArgs>(args: SelectSubset<T, TokenDeleteArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one Token.
-     * @param {TokenUpdateArgs} args - Arguments to update one Token.
-     * @example
-     * // Update one Token
-     * const token = await prisma.token.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends TokenUpdateArgs>(args: SelectSubset<T, TokenUpdateArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more Tokens.
-     * @param {TokenDeleteManyArgs} args - Arguments to filter Tokens to delete.
-     * @example
-     * // Delete a few Tokens
-     * const { count } = await prisma.token.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends TokenDeleteManyArgs>(args?: SelectSubset<T, TokenDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Tokens.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TokenUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Tokens
-     * const token = await prisma.token.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends TokenUpdateManyArgs>(args: SelectSubset<T, TokenUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Tokens and returns the data updated in the database.
-     * @param {TokenUpdateManyAndReturnArgs} args - Arguments to update many Tokens.
-     * @example
-     * // Update many Tokens
-     * const token = await prisma.token.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more Tokens and only return the `id`
-     * const tokenWithIdOnly = await prisma.token.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends TokenUpdateManyAndReturnArgs>(args: SelectSubset<T, TokenUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "updateManyAndReturn">>
-
-    /**
-     * Create or update one Token.
-     * @param {TokenUpsertArgs} args - Arguments to update or create a Token.
-     * @example
-     * // Update or create a Token
-     * const token = await prisma.token.upsert({
-     *   create: {
-     *     // ... data to create a Token
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Token we want to update
-     *   }
-     * })
-     */
-    upsert<T extends TokenUpsertArgs>(args: SelectSubset<T, TokenUpsertArgs<ExtArgs>>): Prisma__TokenClient<$Result.GetResult<Prisma.$TokenPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of Tokens.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TokenCountArgs} args - Arguments to filter Tokens to count.
-     * @example
-     * // Count the number of Tokens
-     * const count = await prisma.token.count({
-     *   where: {
-     *     // ... the filter for the Tokens we want to count
-     *   }
-     * })
-    **/
-    count<T extends TokenCountArgs>(
-      args?: Subset<T, TokenCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], TokenCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Token.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TokenAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends TokenAggregateArgs>(args: Subset<T, TokenAggregateArgs>): Prisma.PrismaPromise<GetTokenAggregateType<T>>
-
-    /**
-     * Group by Token.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {TokenGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends TokenGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: TokenGroupByArgs['orderBy'] }
-        : { orderBy?: TokenGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, TokenGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTokenGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the Token model
-   */
-  readonly fields: TokenFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for Token.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__TokenClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the Token model
-   */ 
-  interface TokenFieldRefs {
-    readonly id: FieldRef<"Token", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * Token findUnique
-   */
-  export type TokenFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * Filter, which Token to fetch.
-     */
-    where: TokenWhereUniqueInput
-  }
-
-  /**
-   * Token findUniqueOrThrow
-   */
-  export type TokenFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * Filter, which Token to fetch.
-     */
-    where: TokenWhereUniqueInput
-  }
-
-  /**
-   * Token findFirst
-   */
-  export type TokenFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * Filter, which Token to fetch.
-     */
-    where?: TokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Tokens to fetch.
-     */
-    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Tokens.
-     */
-    cursor?: TokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Tokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Tokens.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Tokens.
-     */
-    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
-  }
-
-  /**
-   * Token findFirstOrThrow
-   */
-  export type TokenFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * Filter, which Token to fetch.
-     */
-    where?: TokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Tokens to fetch.
-     */
-    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for Tokens.
-     */
-    cursor?: TokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Tokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Tokens.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of Tokens.
-     */
-    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
-  }
-
-  /**
-   * Token findMany
-   */
-  export type TokenFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * Filter, which Tokens to fetch.
-     */
-    where?: TokenWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of Tokens to fetch.
-     */
-    orderBy?: TokenOrderByWithRelationInput | TokenOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing Tokens.
-     */
-    cursor?: TokenWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` Tokens from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` Tokens.
-     */
-    skip?: number
-    distinct?: TokenScalarFieldEnum | TokenScalarFieldEnum[]
-  }
-
-  /**
-   * Token create
-   */
-  export type TokenCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * The data needed to create a Token.
-     */
-    data?: XOR<TokenCreateInput, TokenUncheckedCreateInput>
-  }
-
-  /**
-   * Token createMany
-   */
-  export type TokenCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many Tokens.
-     */
-    data: TokenCreateManyInput | TokenCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Token createManyAndReturn
-   */
-  export type TokenCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many Tokens.
-     */
-    data: TokenCreateManyInput | TokenCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * Token update
-   */
-  export type TokenUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * The data needed to update a Token.
-     */
-    data: XOR<TokenUpdateInput, TokenUncheckedUpdateInput>
-    /**
-     * Choose, which Token to update.
-     */
-    where: TokenWhereUniqueInput
-  }
-
-  /**
-   * Token updateMany
-   */
-  export type TokenUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update Tokens.
-     */
-    data: XOR<TokenUpdateManyMutationInput, TokenUncheckedUpdateManyInput>
-    /**
-     * Filter which Tokens to update
-     */
-    where?: TokenWhereInput
-  }
-
-  /**
-   * Token updateManyAndReturn
-   */
-  export type TokenUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to update Tokens.
-     */
-    data: XOR<TokenUpdateManyMutationInput, TokenUncheckedUpdateManyInput>
-    /**
-     * Filter which Tokens to update
-     */
-    where?: TokenWhereInput
-  }
-
-  /**
-   * Token upsert
-   */
-  export type TokenUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * The filter to search for the Token to update in case it exists.
-     */
-    where: TokenWhereUniqueInput
-    /**
-     * In case the Token found by the `where` argument doesn't exist, create a new Token with this data.
-     */
-    create: XOR<TokenCreateInput, TokenUncheckedCreateInput>
-    /**
-     * In case the Token was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<TokenUpdateInput, TokenUncheckedUpdateInput>
-  }
-
-  /**
-   * Token delete
-   */
-  export type TokenDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-    /**
-     * Filter which Token to delete.
-     */
-    where: TokenWhereUniqueInput
-  }
-
-  /**
-   * Token deleteMany
-   */
-  export type TokenDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which Tokens to delete
-     */
-    where?: TokenWhereInput
-  }
-
-  /**
-   * Token without action
-   */
-  export type TokenDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the Token
-     */
-    select?: TokenSelect<ExtArgs> | null
-  }
-
-
-  /**
-   * Model SomeModel
-   */
-
-  export type AggregateSomeModel = {
-    _count: SomeModelCountAggregateOutputType | null
-    _min: SomeModelMinAggregateOutputType | null
-    _max: SomeModelMaxAggregateOutputType | null
-  }
-
-  export type SomeModelMinAggregateOutputType = {
-    id: string | null
-  }
-
-  export type SomeModelMaxAggregateOutputType = {
-    id: string | null
-  }
-
-  export type SomeModelCountAggregateOutputType = {
-    id: number
-    _all: number
-  }
-
-
-  export type SomeModelMinAggregateInputType = {
-    id?: true
-  }
-
-  export type SomeModelMaxAggregateInputType = {
-    id?: true
-  }
-
-  export type SomeModelCountAggregateInputType = {
-    id?: true
-    _all?: true
-  }
-
-  export type SomeModelAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SomeModel to aggregate.
-     */
-    where?: SomeModelWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SomeModels to fetch.
-     */
-    orderBy?: SomeModelOrderByWithRelationInput | SomeModelOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: SomeModelWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SomeModels from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SomeModels.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned SomeModels
-    **/
-    _count?: true | SomeModelCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: SomeModelMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: SomeModelMaxAggregateInputType
-  }
-
-  export type GetSomeModelAggregateType<T extends SomeModelAggregateArgs> = {
-        [P in keyof T & keyof AggregateSomeModel]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateSomeModel[P]>
-      : GetScalarType<T[P], AggregateSomeModel[P]>
-  }
-
-
-
-
-  export type SomeModelGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: SomeModelWhereInput
-    orderBy?: SomeModelOrderByWithAggregationInput | SomeModelOrderByWithAggregationInput[]
-    by: SomeModelScalarFieldEnum[] | SomeModelScalarFieldEnum
-    having?: SomeModelScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: SomeModelCountAggregateInputType | true
-    _min?: SomeModelMinAggregateInputType
-    _max?: SomeModelMaxAggregateInputType
-  }
-
-  export type SomeModelGroupByOutputType = {
-    id: string
-    _count: SomeModelCountAggregateOutputType | null
-    _min: SomeModelMinAggregateOutputType | null
-    _max: SomeModelMaxAggregateOutputType | null
-  }
-
-  type GetSomeModelGroupByPayload<T extends SomeModelGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<SomeModelGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof SomeModelGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], SomeModelGroupByOutputType[P]>
-            : GetScalarType<T[P], SomeModelGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type SomeModelSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["someModel"]>
-
-  export type SomeModelSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["someModel"]>
-
-  export type SomeModelSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-  }, ExtArgs["result"]["someModel"]>
-
-  export type SomeModelSelectScalar = {
-    id?: boolean
-  }
-
-
-  export type $SomeModelPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "SomeModel"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: string
-    }, ExtArgs["result"]["someModel"]>
-    composites: {}
-  }
-
-  type SomeModelGetPayload<S extends boolean | null | undefined | SomeModelDefaultArgs> = $Result.GetResult<Prisma.$SomeModelPayload, S>
-
-  type SomeModelCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<SomeModelFindManyArgs, 'select' | 'include' | 'distinct'> & {
-      select?: SomeModelCountAggregateInputType | true
-    }
-
-  export interface SomeModelDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['SomeModel'], meta: { name: 'SomeModel' } }
-    /**
-     * Find zero or one SomeModel that matches the filter.
-     * @param {SomeModelFindUniqueArgs} args - Arguments to find a SomeModel
-     * @example
-     * // Get one SomeModel
-     * const someModel = await prisma.someModel.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends SomeModelFindUniqueArgs>(args: SelectSubset<T, SomeModelFindUniqueArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "findUnique"> | null, null, ExtArgs>
-
-    /**
-     * Find one SomeModel that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {SomeModelFindUniqueOrThrowArgs} args - Arguments to find a SomeModel
-     * @example
-     * // Get one SomeModel
-     * const someModel = await prisma.someModel.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends SomeModelFindUniqueOrThrowArgs>(args: SelectSubset<T, SomeModelFindUniqueOrThrowArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "findUniqueOrThrow">, never, ExtArgs>
-
-    /**
-     * Find the first SomeModel that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SomeModelFindFirstArgs} args - Arguments to find a SomeModel
-     * @example
-     * // Get one SomeModel
-     * const someModel = await prisma.someModel.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends SomeModelFindFirstArgs>(args?: SelectSubset<T, SomeModelFindFirstArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "findFirst"> | null, null, ExtArgs>
-
-    /**
-     * Find the first SomeModel that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SomeModelFindFirstOrThrowArgs} args - Arguments to find a SomeModel
-     * @example
-     * // Get one SomeModel
-     * const someModel = await prisma.someModel.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends SomeModelFindFirstOrThrowArgs>(args?: SelectSubset<T, SomeModelFindFirstOrThrowArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "findFirstOrThrow">, never, ExtArgs>
-
-    /**
-     * Find zero or more SomeModels that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SomeModelFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all SomeModels
-     * const someModels = await prisma.someModel.findMany()
-     * 
-     * // Get first 10 SomeModels
-     * const someModels = await prisma.someModel.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const someModelWithIdOnly = await prisma.someModel.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends SomeModelFindManyArgs>(args?: SelectSubset<T, SomeModelFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "findMany">>
-
-    /**
-     * Create a SomeModel.
-     * @param {SomeModelCreateArgs} args - Arguments to create a SomeModel.
-     * @example
-     * // Create one SomeModel
-     * const SomeModel = await prisma.someModel.create({
-     *   data: {
-     *     // ... data to create a SomeModel
-     *   }
-     * })
-     * 
-     */
-    create<T extends SomeModelCreateArgs>(args: SelectSubset<T, SomeModelCreateArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "create">, never, ExtArgs>
-
-    /**
-     * Create many SomeModels.
-     * @param {SomeModelCreateManyArgs} args - Arguments to create many SomeModels.
-     * @example
-     * // Create many SomeModels
-     * const someModel = await prisma.someModel.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends SomeModelCreateManyArgs>(args?: SelectSubset<T, SomeModelCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create many SomeModels and returns the data saved in the database.
-     * @param {SomeModelCreateManyAndReturnArgs} args - Arguments to create many SomeModels.
-     * @example
-     * // Create many SomeModels
-     * const someModel = await prisma.someModel.createManyAndReturn({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Create many SomeModels and only return the `id`
-     * const someModelWithIdOnly = await prisma.someModel.createManyAndReturn({
-     *   select: { id: true },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    createManyAndReturn<T extends SomeModelCreateManyAndReturnArgs>(args?: SelectSubset<T, SomeModelCreateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "createManyAndReturn">>
-
-    /**
-     * Delete a SomeModel.
-     * @param {SomeModelDeleteArgs} args - Arguments to delete one SomeModel.
-     * @example
-     * // Delete one SomeModel
-     * const SomeModel = await prisma.someModel.delete({
-     *   where: {
-     *     // ... filter to delete one SomeModel
-     *   }
-     * })
-     * 
-     */
-    delete<T extends SomeModelDeleteArgs>(args: SelectSubset<T, SomeModelDeleteArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "delete">, never, ExtArgs>
-
-    /**
-     * Update one SomeModel.
-     * @param {SomeModelUpdateArgs} args - Arguments to update one SomeModel.
-     * @example
-     * // Update one SomeModel
-     * const someModel = await prisma.someModel.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends SomeModelUpdateArgs>(args: SelectSubset<T, SomeModelUpdateArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "update">, never, ExtArgs>
-
-    /**
-     * Delete zero or more SomeModels.
-     * @param {SomeModelDeleteManyArgs} args - Arguments to filter SomeModels to delete.
-     * @example
-     * // Delete a few SomeModels
-     * const { count } = await prisma.someModel.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends SomeModelDeleteManyArgs>(args?: SelectSubset<T, SomeModelDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more SomeModels.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SomeModelUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many SomeModels
-     * const someModel = await prisma.someModel.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends SomeModelUpdateManyArgs>(args: SelectSubset<T, SomeModelUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more SomeModels and returns the data updated in the database.
-     * @param {SomeModelUpdateManyAndReturnArgs} args - Arguments to update many SomeModels.
-     * @example
-     * // Update many SomeModels
-     * const someModel = await prisma.someModel.updateManyAndReturn({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * 
-     * // Update zero or more SomeModels and only return the `id`
-     * const someModelWithIdOnly = await prisma.someModel.updateManyAndReturn({
-     *   select: { id: true },
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * 
-     */
-    updateManyAndReturn<T extends SomeModelUpdateManyAndReturnArgs>(args: SelectSubset<T, SomeModelUpdateManyAndReturnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "updateManyAndReturn">>
-
-    /**
-     * Create or update one SomeModel.
-     * @param {SomeModelUpsertArgs} args - Arguments to update or create a SomeModel.
-     * @example
-     * // Update or create a SomeModel
-     * const someModel = await prisma.someModel.upsert({
-     *   create: {
-     *     // ... data to create a SomeModel
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the SomeModel we want to update
-     *   }
-     * })
-     */
-    upsert<T extends SomeModelUpsertArgs>(args: SelectSubset<T, SomeModelUpsertArgs<ExtArgs>>): Prisma__SomeModelClient<$Result.GetResult<Prisma.$SomeModelPayload<ExtArgs>, T, "upsert">, never, ExtArgs>
-
-
-    /**
-     * Count the number of SomeModels.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SomeModelCountArgs} args - Arguments to filter SomeModels to count.
-     * @example
-     * // Count the number of SomeModels
-     * const count = await prisma.someModel.count({
-     *   where: {
-     *     // ... the filter for the SomeModels we want to count
-     *   }
-     * })
-    **/
-    count<T extends SomeModelCountArgs>(
-      args?: Subset<T, SomeModelCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], SomeModelCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a SomeModel.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SomeModelAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends SomeModelAggregateArgs>(args: Subset<T, SomeModelAggregateArgs>): Prisma.PrismaPromise<GetSomeModelAggregateType<T>>
-
-    /**
-     * Group by SomeModel.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {SomeModelGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends SomeModelGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: SomeModelGroupByArgs['orderBy'] }
-        : { orderBy?: SomeModelGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, SomeModelGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetSomeModelGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the SomeModel model
-   */
-  readonly fields: SomeModelFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for SomeModel.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__SomeModelClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the SomeModel model
-   */ 
-  interface SomeModelFieldRefs {
-    readonly id: FieldRef<"SomeModel", 'String'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * SomeModel findUnique
-   */
-  export type SomeModelFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * Filter, which SomeModel to fetch.
-     */
-    where: SomeModelWhereUniqueInput
-  }
-
-  /**
-   * SomeModel findUniqueOrThrow
-   */
-  export type SomeModelFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * Filter, which SomeModel to fetch.
-     */
-    where: SomeModelWhereUniqueInput
-  }
-
-  /**
-   * SomeModel findFirst
-   */
-  export type SomeModelFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * Filter, which SomeModel to fetch.
-     */
-    where?: SomeModelWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SomeModels to fetch.
-     */
-    orderBy?: SomeModelOrderByWithRelationInput | SomeModelOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SomeModels.
-     */
-    cursor?: SomeModelWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SomeModels from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SomeModels.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SomeModels.
-     */
-    distinct?: SomeModelScalarFieldEnum | SomeModelScalarFieldEnum[]
-  }
-
-  /**
-   * SomeModel findFirstOrThrow
-   */
-  export type SomeModelFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * Filter, which SomeModel to fetch.
-     */
-    where?: SomeModelWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SomeModels to fetch.
-     */
-    orderBy?: SomeModelOrderByWithRelationInput | SomeModelOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for SomeModels.
-     */
-    cursor?: SomeModelWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SomeModels from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SomeModels.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of SomeModels.
-     */
-    distinct?: SomeModelScalarFieldEnum | SomeModelScalarFieldEnum[]
-  }
-
-  /**
-   * SomeModel findMany
-   */
-  export type SomeModelFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * Filter, which SomeModels to fetch.
-     */
-    where?: SomeModelWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of SomeModels to fetch.
-     */
-    orderBy?: SomeModelOrderByWithRelationInput | SomeModelOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing SomeModels.
-     */
-    cursor?: SomeModelWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` SomeModels from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` SomeModels.
-     */
-    skip?: number
-    distinct?: SomeModelScalarFieldEnum | SomeModelScalarFieldEnum[]
-  }
-
-  /**
-   * SomeModel create
-   */
-  export type SomeModelCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * The data needed to create a SomeModel.
-     */
-    data?: XOR<SomeModelCreateInput, SomeModelUncheckedCreateInput>
-  }
-
-  /**
-   * SomeModel createMany
-   */
-  export type SomeModelCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many SomeModels.
-     */
-    data: SomeModelCreateManyInput | SomeModelCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * SomeModel createManyAndReturn
-   */
-  export type SomeModelCreateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelectCreateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to create many SomeModels.
-     */
-    data: SomeModelCreateManyInput | SomeModelCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * SomeModel update
-   */
-  export type SomeModelUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * The data needed to update a SomeModel.
-     */
-    data: XOR<SomeModelUpdateInput, SomeModelUncheckedUpdateInput>
-    /**
-     * Choose, which SomeModel to update.
-     */
-    where: SomeModelWhereUniqueInput
-  }
-
-  /**
-   * SomeModel updateMany
-   */
-  export type SomeModelUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update SomeModels.
-     */
-    data: XOR<SomeModelUpdateManyMutationInput, SomeModelUncheckedUpdateManyInput>
-    /**
-     * Filter which SomeModels to update
-     */
-    where?: SomeModelWhereInput
-  }
-
-  /**
-   * SomeModel updateManyAndReturn
-   */
-  export type SomeModelUpdateManyAndReturnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelectUpdateManyAndReturn<ExtArgs> | null
-    /**
-     * The data used to update SomeModels.
-     */
-    data: XOR<SomeModelUpdateManyMutationInput, SomeModelUncheckedUpdateManyInput>
-    /**
-     * Filter which SomeModels to update
-     */
-    where?: SomeModelWhereInput
-  }
-
-  /**
-   * SomeModel upsert
-   */
-  export type SomeModelUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * The filter to search for the SomeModel to update in case it exists.
-     */
-    where: SomeModelWhereUniqueInput
-    /**
-     * In case the SomeModel found by the `where` argument doesn't exist, create a new SomeModel with this data.
-     */
-    create: XOR<SomeModelCreateInput, SomeModelUncheckedCreateInput>
-    /**
-     * In case the SomeModel was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<SomeModelUpdateInput, SomeModelUncheckedUpdateInput>
-  }
-
-  /**
-   * SomeModel delete
-   */
-  export type SomeModelDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-    /**
-     * Filter which SomeModel to delete.
-     */
-    where: SomeModelWhereUniqueInput
-  }
-
-  /**
-   * SomeModel deleteMany
-   */
-  export type SomeModelDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which SomeModels to delete
-     */
-    where?: SomeModelWhereInput
-  }
-
-  /**
-   * SomeModel without action
-   */
-  export type SomeModelDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the SomeModel
-     */
-    select?: SomeModelSelect<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -3832,27 +1806,10 @@ export namespace Prisma {
   export const UserScalarFieldEnum: {
     id: 'id',
     email: 'email',
-    password: 'password',
-    name: 'name',
-    createdAt: 'createdAt',
-    updatedAt: 'updatedAt'
+    password: 'password'
   };
 
   export type UserScalarFieldEnum = (typeof UserScalarFieldEnum)[keyof typeof UserScalarFieldEnum]
-
-
-  export const TokenScalarFieldEnum: {
-    id: 'id'
-  };
-
-  export type TokenScalarFieldEnum = (typeof TokenScalarFieldEnum)[keyof typeof TokenScalarFieldEnum]
-
-
-  export const SomeModelScalarFieldEnum: {
-    id: 'id'
-  };
-
-  export type SomeModelScalarFieldEnum = (typeof SomeModelScalarFieldEnum)[keyof typeof SomeModelScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -3869,14 +1826,6 @@ export namespace Prisma {
   };
 
   export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
-
-
-  export const NullsOrder: {
-    first: 'first',
-    last: 'last'
-  };
-
-  export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
 
 
   /**
@@ -3913,20 +1862,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'DateTime'
-   */
-  export type DateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime'>
-    
-
-
-  /**
-   * Reference to a field of type 'DateTime[]'
-   */
-  export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -3950,18 +1885,12 @@ export namespace Prisma {
     id?: IntFilter<"User"> | number
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
   }
 
   export type UserOrderByWithRelationInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    name?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
@@ -3971,18 +1900,12 @@ export namespace Prisma {
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
     password?: StringFilter<"User"> | string
-    name?: StringNullableFilter<"User"> | string | null
-    createdAt?: DateTimeFilter<"User"> | Date | string
-    updatedAt?: DateTimeFilter<"User"> | Date | string
   }, "id" | "email">
 
   export type UserOrderByWithAggregationInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    name?: SortOrderInput | SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
     _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
@@ -3997,189 +1920,45 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"User"> | number
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
-    name?: StringNullableWithAggregatesFilter<"User"> | string | null
-    createdAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-    updatedAt?: DateTimeWithAggregatesFilter<"User"> | Date | string
-  }
-
-  export type TokenWhereInput = {
-    AND?: TokenWhereInput | TokenWhereInput[]
-    OR?: TokenWhereInput[]
-    NOT?: TokenWhereInput | TokenWhereInput[]
-    id?: StringFilter<"Token"> | string
-  }
-
-  export type TokenOrderByWithRelationInput = {
-    id?: SortOrder
-  }
-
-  export type TokenWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: TokenWhereInput | TokenWhereInput[]
-    OR?: TokenWhereInput[]
-    NOT?: TokenWhereInput | TokenWhereInput[]
-  }, "id">
-
-  export type TokenOrderByWithAggregationInput = {
-    id?: SortOrder
-    _count?: TokenCountOrderByAggregateInput
-    _max?: TokenMaxOrderByAggregateInput
-    _min?: TokenMinOrderByAggregateInput
-  }
-
-  export type TokenScalarWhereWithAggregatesInput = {
-    AND?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
-    OR?: TokenScalarWhereWithAggregatesInput[]
-    NOT?: TokenScalarWhereWithAggregatesInput | TokenScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"Token"> | string
-  }
-
-  export type SomeModelWhereInput = {
-    AND?: SomeModelWhereInput | SomeModelWhereInput[]
-    OR?: SomeModelWhereInput[]
-    NOT?: SomeModelWhereInput | SomeModelWhereInput[]
-    id?: StringFilter<"SomeModel"> | string
-  }
-
-  export type SomeModelOrderByWithRelationInput = {
-    id?: SortOrder
-  }
-
-  export type SomeModelWhereUniqueInput = Prisma.AtLeast<{
-    id?: string
-    AND?: SomeModelWhereInput | SomeModelWhereInput[]
-    OR?: SomeModelWhereInput[]
-    NOT?: SomeModelWhereInput | SomeModelWhereInput[]
-  }, "id">
-
-  export type SomeModelOrderByWithAggregationInput = {
-    id?: SortOrder
-    _count?: SomeModelCountOrderByAggregateInput
-    _max?: SomeModelMaxOrderByAggregateInput
-    _min?: SomeModelMinOrderByAggregateInput
-  }
-
-  export type SomeModelScalarWhereWithAggregatesInput = {
-    AND?: SomeModelScalarWhereWithAggregatesInput | SomeModelScalarWhereWithAggregatesInput[]
-    OR?: SomeModelScalarWhereWithAggregatesInput[]
-    NOT?: SomeModelScalarWhereWithAggregatesInput | SomeModelScalarWhereWithAggregatesInput[]
-    id?: StringWithAggregatesFilter<"SomeModel"> | string
   }
 
   export type UserCreateInput = {
     email: string
     password: string
-    name?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserUncheckedCreateInput = {
     id?: number
     email: string
     password: string
-    name?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserUpdateInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserCreateManyInput = {
     id?: number
     email: string
     password: string
-    name?: string | null
-    createdAt?: Date | string
-    updatedAt?: Date | string
   }
 
   export type UserUpdateManyMutationInput = {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
   }
 
   export type UserUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
-    name?: NullableStringFieldUpdateOperationsInput | string | null
-    createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
-    updatedAt?: DateTimeFieldUpdateOperationsInput | Date | string
-  }
-
-  export type TokenCreateInput = {
-    id?: string
-  }
-
-  export type TokenUncheckedCreateInput = {
-    id?: string
-  }
-
-  export type TokenUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type TokenUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type TokenCreateManyInput = {
-    id?: string
-  }
-
-  export type TokenUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type TokenUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SomeModelCreateInput = {
-    id?: string
-  }
-
-  export type SomeModelUncheckedCreateInput = {
-    id?: string
-  }
-
-  export type SomeModelUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SomeModelUncheckedUpdateInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SomeModelCreateManyInput = {
-    id?: string
-  }
-
-  export type SomeModelUpdateManyMutationInput = {
-    id?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type SomeModelUncheckedUpdateManyInput = {
-    id?: StringFieldUpdateOperationsInput | string
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -4208,44 +1987,10 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
-  export type StringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type DateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
-  }
-
   export type UserCountOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type UserAvgOrderByAggregateInput = {
@@ -4256,18 +2001,12 @@ export namespace Prisma {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type UserMinOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
     password?: SortOrder
-    name?: SortOrder
-    createdAt?: SortOrder
-    updatedAt?: SortOrder
   }
 
   export type UserSumOrderByAggregateInput = {
@@ -4308,72 +2047,8 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    mode?: QueryMode
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
-  }
-
-  export type TokenCountOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type TokenMaxOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type TokenMinOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type SomeModelCountOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type SomeModelMaxOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type SomeModelMinOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type StringFieldUpdateOperationsInput = {
     set?: string
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -4407,31 +2082,6 @@ export namespace Prisma {
     startsWith?: string | StringFieldRefInput<$PrismaModel>
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     not?: NestedStringFilter<$PrismaModel> | string
-  }
-
-  export type NestedStringNullableFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableFilter<$PrismaModel> | string | null
-  }
-
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
@@ -4476,48 +2126,6 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    notIn?: string[] | ListStringFieldRefInput<$PrismaModel> | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedIntNullableFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel> | null
-    in?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel> | null
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntNullableFilter<$PrismaModel> | number | null
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    notIn?: Date[] | string[] | ListDateTimeFieldRefInput<$PrismaModel>
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
 

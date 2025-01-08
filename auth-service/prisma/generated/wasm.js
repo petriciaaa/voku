@@ -120,18 +120,7 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  password: 'password',
-  name: 'name',
-  createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
-};
-
-exports.Prisma.TokenScalarFieldEnum = {
-  id: 'id'
-};
-
-exports.Prisma.SomeModelScalarFieldEnum = {
-  id: 'id'
+  password: 'password'
 };
 
 exports.Prisma.SortOrder = {
@@ -144,16 +133,9 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
-exports.Prisma.NullsOrder = {
-  first: 'first',
-  last: 'last'
-};
-
 
 exports.Prisma.ModelName = {
-  User: 'User',
-  Token: 'Token',
-  SomeModel: 'SomeModel'
+  User: 'User'
 };
 
 /**

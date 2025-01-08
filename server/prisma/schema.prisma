@@ -21,10 +21,10 @@ model User {
 }
 
 model servers {
-  id         Int      @id @default(autoincrement())
+  id         Int      @id @unique 
   email      String   @unique
   password   String
-  name       String?
+  name       String
   created_at DateTime @default(now())
   updated_at DateTime
 }

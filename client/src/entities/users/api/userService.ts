@@ -1,3 +1,4 @@
+import { BACKEND_ORIGIN } from "@/shared/config/constants/hosts";
 import axios, { Axios, AxiosError, AxiosResponse } from "axios";
 
 export const getAllUsers = () => {
@@ -12,10 +13,10 @@ export const getAllUsers = () => {
       });
   });
 };
-export const createUser = (user: any) => {
+export const createUser = (data: any) => {
   return new Promise((resolve, reject) => {
     axios
-      .post("http://localhost:3000/users", user)
+      .post(BACKEND_ORIGIN + "auth/register", data)
       .then((response: AxiosResponse) => {
         resolve(response.data);
       })
