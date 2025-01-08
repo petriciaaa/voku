@@ -7,8 +7,8 @@ WORKDIR /usr/src/app
 # Copy package.json and package-lock.json
 COPY package*.json ./
 
-# Install only necessary dependencies
-RUN npm install -g nodemon
+# Install all dependencies including devDependencies
+RUN npm install
 
 # Copy Prisma schema and generate Prisma Client
 COPY prisma ./prisma
@@ -20,5 +20,5 @@ COPY . .
 # Expose the application port (replace 3000 with your actual port if different)
 EXPOSE 3000
 
-# Start the application in development mode
-CMD ["npm", "run", "start:dev"]
+# Start the application using nodemon for hot reloading
+CMD ["npx", "nodemon", "--watch", "src", "--exec", "npm", "run", "start"]

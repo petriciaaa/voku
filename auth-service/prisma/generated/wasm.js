@@ -120,7 +120,36 @@ exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
 exports.Prisma.UserScalarFieldEnum = {
   id: 'id',
   email: 'email',
-  password: 'password'
+  password: 'password',
+  displayName: 'displayName',
+  picture: 'picture',
+  role: 'role',
+  isVerified: 'isVerified',
+  isTwoFactorEnabled: 'isTwoFactorEnabled',
+  method: 'method',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.AccountScalarFieldEnum = {
+  id: 'id',
+  type: 'type',
+  provider: 'provider',
+  refreshToken: 'refreshToken',
+  accessToken: 'accessToken',
+  expiresAt: 'expiresAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  userId: 'userId'
+};
+
+exports.Prisma.TokenScalarFieldEnum = {
+  id: 'id',
+  email: 'email',
+  token: 'token',
+  type: 'type',
+  expiresIn: 'expiresIn',
+  createdAt: 'createdAt'
 };
 
 exports.Prisma.SortOrder = {
@@ -133,9 +162,31 @@ exports.Prisma.QueryMode = {
   insensitive: 'insensitive'
 };
 
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+exports.UserRole = exports.$Enums.UserRole = {
+  REGULAR: 'REGULAR',
+  ADMIN: 'ADMIN'
+};
+
+exports.AuthMethod = exports.$Enums.AuthMethod = {
+  CREDENTIALS: 'CREDENTIALS',
+  GOOGLE: 'GOOGLE',
+  YANDEX: 'YANDEX'
+};
+
+exports.TokenType = exports.$Enums.TokenType = {
+  VERIFICATION: 'VERIFICATION',
+  TWO_FACTOR: 'TWO_FACTOR',
+  PASSWORD_RESET: 'PASSWORD_RESET'
+};
 
 exports.Prisma.ModelName = {
-  User: 'User'
+  User: 'User',
+  Account: 'Account',
+  Token: 'Token'
 };
 
 /**
