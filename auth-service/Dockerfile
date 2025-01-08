@@ -1,7 +1,24 @@
+# Use the official Node.js 18 image as a base
 FROM node:18-alpine
-WORKDIR /app
+
+# Set the working directory
+WORKDIR /usr/src/app
+
+# Copy package.json and package-lock.json
 COPY package*.json ./
-RUN npm install
+
+# Install only necessary dependencies
+RUN npm install -g nodemon
+
+# Copy Prisma schema and generate Prisma Client
+COPY prisma ./prisma
+RUN npx prisma generate
+
+# Copy the rest of the application source code
 COPY . .
-RUN npm run build
-CMD ["node", "dist/main"]
+
+# Expose the application port (replace 3000 with your actual port if different)
+EXPOSE 3000
+
+# Start the application in development mode
+CMD ["npm", "run", "start:dev"]
